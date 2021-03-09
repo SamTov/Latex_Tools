@@ -1,5 +1,5 @@
-ARTICLE=article
-ARTICLE_PATH=Article
+ARTICLE=script
+ARTICLE_PATH=.
 
 ### -------------- ###
 ### Function calls ###
@@ -14,7 +14,7 @@ endif
 
 # Define the standard Latex commend
 define tex_command
-	pdflatex $(1) >> logging.out
+	pdflatex -interaction nonstopmode -halt-on-error -file-line-error $(1) >> logging.out
 endef
 
 # Define the pipeline for latex compile
@@ -60,7 +60,4 @@ clean:
 	cd $(ARTICLE_PATH) ; rm *.aux *.bbl *.blg *.log *.pdf logging.out
 	clear
 	@echo All done!
-
-
-
 
